@@ -1,0 +1,44 @@
+# AIoT เฝ้าระวังเครื่องจักร (AIoT Machine Health)
+
+ชุดเรียนรู้ AIoT สำหรับช่างซ่อมบำรุงและวิศวกรโรงงาน: ติดบอร์ด **Cucumber RS (ESP32-S2)** บนเครื่องจักร
+วัดการสั่นด้วย MPU-6050 ให้ระบบเรียนรู้ค่าปกติแล้วแจ้งเตือนผ่าน **Telegram** และสั่งงานเป็นภาษาไทยผ่าน **AI ที่รันบน PC** (Gemma + Ollama)
+
+📖 **เว็บไซต์บทเรียน:** https://wchotichai-pp.github.io/aiot_machine_health/
+
+ต่อยอดจาก [AIoT for Beginners](https://vsupacha.github.io/aiot-for-beginners/) โดยใช้หลักเดียวกันคือ **AI เสนอ ระบบตัดสิน**
+
+## เริ่มเร็ว
+
+```bash
+git clone https://github.com/wchotichai-pp/aiot_machine_health.git
+cd aiot_machine_health
+cp .env.example .env              # แก้ API_KEY และค่า Telegram
+docker compose up -d --build      # mosquitto + ollama + gateway + bot
+pip install paho-mqtt
+python simulator/simulate_machine.py --demo
+```
+
+เปิด http://localhost:8000 แล้วใส่ `API_KEY` เพื่อดูแดชบอร์ด
+
+## โครงสร้าง
+
+| โฟลเดอร์ | เนื้อหา |
+| --- | --- |
+| `firmware/cucumber_vibration/` | เฟิร์มแวร์ PlatformIO |
+| `gateway/` | FastAPI: กฎตัดสินสถานะ, SQLite, MQTT, REST API, แดชบอร์ด Telegram Mini App, ชุดทดสอบ |
+| `bot/` | บอท Telegram |
+| `simulator/` | ตัวจำลองเครื่องจักร |
+| `mosquitto/` | ค่าตั้ง MQTT broker |
+| `docs/` | เว็บไซต์บทเรียน (MkDocs Material) |
+
+## ทดสอบ
+
+```bash
+cd gateway && pip install -r requirements.txt pytest && python -m pytest
+```
+
+GitHub Actions รันชุดทดสอบ คอมไพล์เฟิร์มแวร์ และ deploy เว็บไซต์ทุกครั้งที่ push ขึ้น `main`
+
+## การพัฒนาด้วย AI
+
+โปรเจกต์นี้พัฒนาร่วมกับ AI โดยบันทึกคำสั่ง ผลงาน และวิธีตรวจทุกขั้นไว้ใน [docs/ai-dev-log.md](docs/ai-dev-log.md)

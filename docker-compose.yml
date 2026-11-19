@@ -1,0 +1,59 @@
+# AIoT Machine Health — รันทั้งระบบบน PC ด้วยคำสั่งเดียว
+#   cp .env.example .env      (แล้วแก้ค่าใน .env)
+#   docker compose up -d --build
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto:/mosquitto/config
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama:/root/.ollama
+    restart: unless-stopped
+
+  # ดาวน์โหลดโมเดลครั้งแรก (ครั้งต่อไปจะใช้ไฟล์เดิมใน volume) แล้วจบการทำงาน
+  model-init:
+    image: ollama/ollama:latest
+    depends_on:
+      - ollama
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_MODEL=${OLLAMA_MODEL:-gemma3:1b}
+    entrypoint: ["sh", "-c", "until ollama list >/dev/null 2>&1; do sleep 2; done; ollama pull $$OLLAMA_MODEL"]
+    restart: "no"
+
+  gateway:
+    build: ./gateway
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      - MQTT_HOST=mosquitto
+      - OLLAMA_URL=http://ollama:11434
+      - DB_PATH=data/aiot.db
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - mosquitto
+      - ollama
+    restart: unless-stopped
+
+  bot:
+    build: ./bot
+    env_file: .env
+    environment:
+      - GATEWAY_URL=http://gateway:8000
+      - SUBSCRIBERS_FILE=data/subscribers.json
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - gateway
+    restart: unless-stopped
+
+volumes:
+  ollama:

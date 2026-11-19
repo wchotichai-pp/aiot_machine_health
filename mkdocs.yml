@@ -1,0 +1,81 @@
+site_name: AIoT เฝ้าระวังเครื่องจักร
+site_description: เรียนรู้ AIoT จากระบบเฝ้าระวังการสั่นสะเทือนของเครื่องจักร ด้วยบอร์ด Cucumber, Docker, Telegram และ AI บน PC
+docs_dir: docs
+repo_url: https://github.com/wchotichai-pp/aiot_machine_health
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: th
+  font:
+    text: Noto Sans Thai
+    code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: โหมดมืด
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: โหมดสว่าง
+  features:
+    - navigation.sections
+    - navigation.footer
+    - navigation.top
+    - content.code.copy
+    - search.highlight
+  icon:
+    logo: material/engine-outline
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - หน้าแรก: index.md
+  - สำหรับผู้เรียน:
+      - 1. AIoT ในงานซ่อมบำรุง: learn/01-aiot-in-industry.md
+      - 2. การสั่นสะเทือนเบื้องต้น: learn/02-vibration-basics.md
+      - 3. เตรียมเครื่องมือ: learn/03-setup.md
+      - 4. เปิดระบบด้วย Docker: learn/04-run-system.md
+      - 5. ติดตั้งบอร์ด Cucumber: learn/05-firmware.md
+      - 6. ใช้งานผ่าน Telegram: learn/06-telegram.md
+      - 7. AI เสนอ ระบบตัดสิน: learn/07-ai.md
+      - 8. ปรับจูนและแบบฝึกหัด: learn/08-tuning.md
+      - แก้ปัญหา: learn/troubleshooting.md
+  - สำหรับผู้สอน:
+      - แผนการสอน: instructor/lesson-plan.md
+      - สถาปัตยกรรมและ API: instructor/architecture.md
+      - ความปลอดภัย: instructor/security.md
+  - พัฒนาด้วย AI: ai-dev-log.md
+  - อ้างอิง: references.md

@@ -1,0 +1,21 @@
+# ความลับ
+.env
+firmware/**/include/secrets.h
+mosquitto/passwd
+
+# ข้อมูลที่ระบบสร้าง
+data/
+*.db
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# PlatformIO
+.pio/
+.vscode/
+
+# เว็บที่ build แล้ว
+site/

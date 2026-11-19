@@ -1,0 +1,6 @@
+.md-typeset h1 { font-weight: 700; }
+.md-typeset table:not([class]) { font-size: 0.72rem; }
+.state-dot { display: inline-block; width: .8em; height: .8em; border-radius: 50%; vertical-align: -0.05em; margin-right: .3em; }
+.state-dot.green { background: #1f9d55; } .state-dot.yellow { background: #d4a106; } .state-dot.red { background: #d64541; }
+.state-dot.white { background: #c9cfcc; border: 1px solid #888; } .state-dot.blue { background: #2f6fd6; } .state-dot.purple { background: #8e44ad; }
+.md-typeset .grid.cards > ul > li { border-radius: .4rem; }

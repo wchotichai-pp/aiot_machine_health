@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Machine Health</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <p class="eyebrow" id="greet">AIoT Machine Health</p>
+      <select id="machine" aria-label="เลือกเครื่องจักร"></select>
+    </div>
+    <span class="conn" id="conn"><i></i><b>กำลังเชื่อมต่อ</b></span>
+  </header>
+
+  <main id="main" hidden>
+    <section class="hero" id="hero">
+      <div class="lamp" id="lamp" aria-hidden="true"></div>
+      <div>
+        <p class="state" id="state">--</p>
+        <p class="reason" id="reason">--</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <div>
+          <p class="label">การสั่น RMS</p>
+          <p class="big"><span id="rms">--</span><small>m/s²</small></p>
+        </div>
+        <dl class="mini">
+          <div><dt>Peak</dt><dd id="peak">--</dd></div>
+          <div><dt>อุณหภูมิ</dt><dd id="temp">--</dd></div>
+          <div><dt>WiFi</dt><dd id="rssi">--</dd></div>
+        </dl>
+      </div>
+      <svg id="chart" viewBox="0 0 320 140" preserveAspectRatio="none" role="img"
+           aria-label="กราฟการสั่น 10 นาทีล่าสุด"></svg>
+      <p class="legend"><span class="sw warn"></span>เกณฑ์เฝ้าระวัง <b id="th-warn">--</b>
+        <span class="sw alarm"></span>อันตราย <b id="th-alarm">--</b> <span id="th-src"></span></p>
+    </section>
+
+    <section class="card">
+      <p class="label">ค่าปกติ (baseline)</p>
+      <p class="baseline" id="baseline">--</p>
+      <div class="buttons">
+        <button type="button" data-cmd="learn_baseline">เรียนรู้ค่าปกติ</button>
+        <button type="button" data-cmd="maintenance">ซ่อมบำรุง 30 นาที</button>
+        <button type="button" data-cmd="resume">กลับมาเฝ้าระวัง</button>
+      </div>
+      <p class="label">ความไว</p>
+      <div class="seg" id="seg">
+        <button type="button" data-level="low">ต่ำ</button>
+        <button type="button" data-level="normal">ปกติ</button>
+        <button type="button" data-level="high">สูง</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="label">เหตุการณ์ล่าสุด</p>
+      <ol class="events" id="events"></ol>
+    </section>
+  </main>
+
+  <form class="keyform" id="keyform" hidden>
+    <p>เปิดนอก Telegram: ใส่ API_KEY จากไฟล์ .env เพื่อดูแดชบอร์ดบนคอมพิวเตอร์</p>
+    <input id="keyinput" type="password" autocomplete="off" placeholder="API_KEY">
+    <button type="submit">เข้าสู่ระบบ</button>
+  </form>
+  <p class="notice" id="notice">กำลังโหลด…</p>
+  <script src="app.js"></script>
+</body>
+</html>
