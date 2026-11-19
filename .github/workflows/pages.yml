@@ -3,7 +3,7 @@ name: Deploy website
 on:
   push:
     branches: [main]
-    paths: ["docs/**", "mkdocs.yml", ".github/workflows/pages.yml"]
+    paths: ["docs/**", "mkdocs.yml", "demo/**", "gateway/static/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -25,6 +25,8 @@ jobs:
           python-version: "3.12"
       - run: pip install -r docs/requirements.txt
       - run: mkdocs build --strict
+      - name: Add live demo (dashboard with simulated data)
+        run: bash demo/build_demo.sh site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

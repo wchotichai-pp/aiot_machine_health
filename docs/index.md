@@ -53,6 +53,7 @@ flowchart LR
 <div class="grid cards" markdown>
 
 - **ผู้เรียน** — เริ่มที่ [1. AIoT ในงานซ่อมบำรุง](learn/01-aiot-in-industry.md) แล้วไล่ตามลำดับ ใช้เวลาประมาณ 3 ชั่วโมง
+- **อยากเห็นระบบทำงานก่อน** — เปิด [เดโมแดชบอร์ด](https://wchotichai-pp.github.io/aiot_machine_health/demo/) ใช้ได้ทันทีในเบราว์เซอร์ ไม่ต้องมีบอร์ด ลองกดให้เครื่อง "ชำรุด" แล้วดูสถานะเปลี่ยน
 - **ยังไม่มีบอร์ด** — ข้ามบทที่ 5 ไปก่อน ใช้ [ตัวจำลองเครื่องจักร](learn/04-run-system.md#simulator) แทนได้ทุกบท
 - **ผู้สอน** — ดู [แผนการสอน](instructor/lesson-plan.md) และ [สถาปัตยกรรมและ API](instructor/architecture.md)
 - **อยากรู้ว่าสร้างด้วย AI อย่างไร** — ดู [บันทึกการพัฒนาด้วย AI](ai-dev-log.md)

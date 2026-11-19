@@ -4,6 +4,7 @@
 วัดการสั่นด้วย MPU-6050 ให้ระบบเรียนรู้ค่าปกติแล้วแจ้งเตือนผ่าน **Telegram** และสั่งงานเป็นภาษาไทยผ่าน **AI ที่รันบน PC** (Gemma + Ollama)
 
 📖 **เว็บไซต์บทเรียน:** https://wchotichai-pp.github.io/aiot_machine_health/
+🖥️ **เดโมแดชบอร์ด (ข้อมูลจำลอง ไม่ต้องมีบอร์ด):** https://wchotichai-pp.github.io/aiot_machine_health/demo/
 
 ต่อยอดจาก [AIoT for Beginners](https://vsupacha.github.io/aiot-for-beginners/) โดยใช้หลักเดียวกันคือ **AI เสนอ ระบบตัดสิน**
 
@@ -30,6 +31,7 @@ python simulator/simulate_machine.py --demo
 | `simulator/` | ตัวจำลองเครื่องจักร |
 | `mosquitto/` | ค่าตั้ง MQTT broker |
 | `docs/` | เว็บไซต์บทเรียน (MkDocs Material) |
+| `demo/` | หน้าเดโมบน GitHub Pages: ใช้แดชบอร์ดตัวจริง + เครื่องจำลองในเบราว์เซอร์ |
 
 ## ทดสอบ
 

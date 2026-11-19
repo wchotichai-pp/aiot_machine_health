@@ -77,5 +77,6 @@ nav:
       - แผนการสอน: instructor/lesson-plan.md
       - สถาปัตยกรรมและ API: instructor/architecture.md
       - ความปลอดภัย: instructor/security.md
+  - เดโมแดชบอร์ด: https://wchotichai-pp.github.io/aiot_machine_health/demo/
   - พัฒนาด้วย AI: ai-dev-log.md
   - อ้างอิง: references.md
