@@ -95,7 +95,7 @@ flowchart LR
 
 **ตรวจ:** `mkdocs build --strict` ต้องไม่มีลิงก์เสีย และเปิดดูภาพหน้าจอของเว็บ
 
-### ขั้นที่ 9 · ขึ้น GitHub และ GitHub Pages (19 พฤศจิกายน 2569)
+### ขั้นที่ 9 · ขึ้น GitHub และ GitHub Pages 
 
 **คำสั่ง:** ส่งลิงก์ repo `https://github.com/wchotichai-pp/aiot_machine_health.git` และเชื่อมบัญชี GitHub กับ Claude
 
