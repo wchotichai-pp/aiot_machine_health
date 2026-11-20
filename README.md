@@ -6,7 +6,21 @@
 📖 **เว็บไซต์บทเรียน:** https://wchotichai-pp.github.io/aiot_machine_health/
 🖥️ **เดโมแดชบอร์ด (ข้อมูลจำลอง ไม่ต้องมีบอร์ด):** https://wchotichai-pp.github.io/aiot_machine_health/demo/
 
+📝 **บันทึกการพัฒนาด้วย AI:** https://wchotichai-pp.github.io/aiot_machine_health/ai-dev-log/
+<!-- 🎬 **คลิปอธิบาย flow การสั่งและตรวจงานกับ AI:** (เพิ่มลิงก์เมื่ออัปโหลดแล้ว) -->
+
 ต่อยอดจาก [AIoT for Beginners](https://vsupacha.github.io/aiot-for-beginners/) โดยใช้หลักเดียวกันคือ **AI เสนอ ระบบตัดสิน**
+
+## ระบบจริงกับเดโม
+
+| | ระบบจริง | เดโมบน GitHub Pages |
+| --- | --- | --- |
+| ข้อมูลการสั่น | บอร์ด Cucumber RS + MPU-6050 | ข้อมูลจำลองในเบราว์เซอร์ |
+| ตัดสินสถานะ | gateway บน PC | กฎชุดเดียวกัน แปลงเป็น JavaScript |
+| AI | Gemma ผ่าน Ollama บน PC | ไม่มี |
+| หน้าจอ | Telegram (แชท + Mini App) | แดชบอร์ดตัวเดียวกับ Mini App |
+
+ผลทดสอบกับบอร์ดและบริการจริงอยู่ท้าย[บันทึกการพัฒนาด้วย AI](https://wchotichai-pp.github.io/aiot_machine_health/ai-dev-log/#hardware-check)
 
 ## เริ่มเร็ว
 
