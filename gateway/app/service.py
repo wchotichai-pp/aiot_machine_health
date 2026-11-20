@@ -196,6 +196,14 @@ class MachineService:
                 error = str(exc)
                 source = "rule_fallback"
                 log.warning("AI แปลไม่สำเร็จ ใช้กฎแทน: %s", exc)
+        if cmd is not None and cmd.intent == "none":
+            # AI ตอบ "none" ได้ทั้งตอนที่ไม่ควรทำอะไร และตอนที่แค่ไม่เข้าใจคำนั้น (เช่นโมเดลเล็กกับคำว่า "ช่วยด้วย")
+            # จึงถามตัวแปลด้วยกฎอีกครั้ง ถ้ากฎเจอคำสั่งชัดเจนให้ใช้ของกฎ
+            # ปลอดภัยเพราะคำสั่งของกฎผ่าน allowlist เดียวกัน และกฎตอบ none เองกับประโยคปฏิเสธ
+            rule_cmd = parse_rules(text, ids)
+            if rule_cmd.intent != "none":
+                log.info("AI ตอบ none แต่กฎเจอ %s: ใช้คำสั่งของกฎ", rule_cmd.intent)
+                cmd, source = rule_cmd, "rule_after_ai"
         if cmd is None:
             cmd = parse_rules(text, ids)
         reply = self.execute(cmd)

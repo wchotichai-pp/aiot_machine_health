@@ -96,7 +96,8 @@ async def ask_gateway(update: Update, text: str) -> None:
     except httpx.HTTPError as exc:
         log.warning("เรียก gateway ไม่สำเร็จ: %s", exc)
         return await update.effective_message.reply_text("ติดต่อ gateway ไม่ได้ ลองใหม่อีกครั้งครับ")
-    tag = {"ai": "🤖 AI", "rule": "📏 กฎ", "rule_fallback": "📏 กฎ (AI ไม่ตอบ)"}.get(data["source"], data["source"])
+    tag = {"ai": "🤖 AI", "rule": "📏 กฎ", "rule_fallback": "📏 กฎ (AI ไม่ตอบ)",
+           "rule_after_ai": "📏 กฎ (AI ไม่เข้าใจ)"}.get(data["source"], data["source"])
     cmd = data["command"]
     detail = cmd["intent"] + "".join(f" {k}={v}" for k, v in cmd.items() if k != "intent" and v is not None)
     await update.effective_message.reply_text(f"{data['reply']}\n\n— แปลโดย {tag}: {detail}")
